@@ -7,28 +7,23 @@ def index():
     resultado = ""
     if request.method == "POST":
         try:
-            num1 = request.form["num1"]
-            num2 = request.form["num2"]
+            num1 = float(request.form["num1"])
+            num2 = float(request.form["num2"])
             operacion = request.form["operacion"]
 
-            # ......
-            resultado = eval(f"{num1}{get_operator(operacion)}{num2}")
+            if operacion == "sumar":
+                resultado = num1 + num2
+            elif operacion == "restar":
+                resultado = num1 - num2
+            elif operacion == "multiplicar":
+                resultado = num1 * num2
+            elif operacion == "dividir":
+                resultado = num1 / num2
+            else:
+                resultado = "Operación no válida"
         except Exception as e:
             resultado = f"Error: {str(e)}"
     return render_template("index.html", resultado=resultado)
-
-
-def get_operator(op):
-    if op == "sumar":
-        return "+"
-    elif op == "restar":
-        return "-"
-    elif op == "multiplicar":
-        return "*"
-    elif op == "dividir":
-        return "/"
-    else:
-        return ""
 
 if __name__ == "__main__":
     app.run(debug=True)
