@@ -17,7 +17,7 @@ def index():
             resultado = f"Error: {str(e)}"
     return render_template("index.html", resultado=resultado)
 
-# Función que retorna el operador como string
+
 def get_operator(op):
     if op == "sumar":
         return "+"
