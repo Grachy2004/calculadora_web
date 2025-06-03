@@ -11,7 +11,7 @@ def index():
             num2 = request.form["num2"]
             operacion = request.form["operacion"]
 
-            # .......
+            # ......
             resultado = eval(f"{num1}{get_operator(operacion)}{num2}")
         except Exception as e:
             resultado = f"Error: {str(e)}"
